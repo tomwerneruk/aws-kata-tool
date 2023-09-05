@@ -2,7 +2,7 @@
 
 `aws-kata-tool` is a 'stub' that can be used as a placeholder service for demos or gamedays, or as a test harness at different points of your project.
 
-This tool is designed to grow over time with various AWS themed functions for different architectures.
+This tool is designed to grow over time with various AWS themed functions for different AWS architectures.
 
 ## Mimic Server
 
