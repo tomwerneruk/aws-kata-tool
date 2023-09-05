@@ -15,15 +15,14 @@ var listenPort int
 // mimicCmd represents the mimic command
 var mimicCmd = &cobra.Command{
 	Use:   "mimic",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "An HTTP Seriver that just mimics it's request.",
+	Long: `An HTTP server that just responds with HTTP 200, and the request returned back into the body.
+	
+	The binding port can be changed via -p or --port. The default is 8080.
+	
+	Issue a GET request to /mimic from curl or your browser. The format of the response can be changed using /mimic?format=json or /mimic?format=pretty`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("mimic called")
+		fmt.Println("mimic server starting")
 		mimicsrv.ServeMimic(listenPort)
 	},
 }
