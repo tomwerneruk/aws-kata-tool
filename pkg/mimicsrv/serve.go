@@ -39,15 +39,21 @@ func getMimicRoot(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			fmt.Printf("Error: %s", err.Error())
 		} else {
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
 			io.WriteString(w, string(jsonStr))
 		}
 	} else if r.URL.Query().Has("format") && r.URL.Query().Get("format") == "pretty" {
+		w.Header().Set("Content-Type", "text/html")
+		w.WriteHeader(http.StatusOK)
 		io.WriteString(w, "<html><head></head><body><table border=1><tr><th>Header Key</th><th>Header Value</th></tr>")
 		for key, value := range r.Header {
 			io.WriteString(w, fmt.Sprintf("<tr><td>%s</td><td>%s</td></tr>\n", key, value))
 		}
 		io.WriteString(w, "</table></body></html>")
 	} else {
+		w.Header().Set("Content-Type", "text/plain")
+		w.WriteHeader(http.StatusOK)
 		io.WriteString(w, "Metadata\n")
 		for key, value := range response_summary.Metadata {
 			io.WriteString(w, fmt.Sprintf("%s : %s\n", key, value))
