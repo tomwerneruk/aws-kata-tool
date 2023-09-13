@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>Mimic Reponse</title>
+    </head>
+    <body>
+        <h1>Mimic Response</h1>
+        <h2>Metadata</h2>
+        <table border="1">
+        {{ range $Name, $Value := .Metadata }} 
+            <tr><td>{{ $Name }}</td><td>{{ $Value }}</td></tr>
+        {{ end}}
+    </table>
+
+    <h2>Headers</h2>
+    <table border="1">
+        {{ range $Name, $Value := .Headers }} 
+            <tr><td>{{ $Name }}</td><td>{{ $Value }}</td></tr>
+        {{ end}}
+    </table>
+    </body>
+</html>
