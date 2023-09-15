@@ -25,8 +25,6 @@ func getMessages(c *gin.Context) {
 }
 
 func getMimicResponse(c *gin.Context) {
-	cpuload.RunCPULoad(1000, 250)
-	//mimicsrv.MimicResponse()
 	type Response struct {
 		Metadata map[string]string
 		Headers  http.Header
