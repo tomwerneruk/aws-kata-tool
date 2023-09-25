@@ -1,3 +1,9 @@
+## 0.3.2 (2023-09-26)
+
+### Fix
+
+- **restapi**: fix template loading as this broke when not running next to source
+
 ## 0.3.1 (2023-09-15)
 
 ### Fix
