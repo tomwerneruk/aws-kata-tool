@@ -1,7 +1,9 @@
 package syncapi
 
 import (
+	"embed"
 	"fmt"
+	"html/template"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -17,6 +19,9 @@ var messages = []microblog{
 	{Username: "wewjewew", Message: "klqkwekwqekqelkw"},
 	{Username: "lkwlewm", Message: "lwewk l2k3 l23k 2l3k232n3m"},
 }
+
+//go:embed templates
+var templatesFolder embed.FS
 
 func getMessages(c *gin.Context) {
 	// Create some fake API request delay
@@ -60,7 +65,8 @@ func ServeMain(port int) {
 	fmt.Println("starting server on", addr)
 
 	router := gin.Default()
-	router.LoadHTMLGlob("templates/*")
+	templ := template.Must(template.ParseFS(templatesFolder, "templates/*.html"))
+	router.SetHTMLTemplate(templ)
 	router.GET("/restapi/messages", getMessages)
 	router.GET("/mimic", getMimicResponse)
 

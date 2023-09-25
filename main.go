@@ -21,7 +21,9 @@ THE SOFTWARE.
 */
 package main
 
-import "github.com/tomwerneruk/aws-kata-tool/cmd"
+import (
+	"github.com/tomwerneruk/aws-kata-tool/cmd"
+)
 
 func main() {
 	cmd.Execute()
